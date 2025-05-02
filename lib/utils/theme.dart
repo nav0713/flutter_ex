@@ -1,30 +1,71 @@
 import 'package:flutter/material.dart';
 
-final ThemeData lightTheme = ThemeData(
+const lightColorScheme = ColorScheme(
   brightness: Brightness.light,
-  primarySwatch: Colors.blue,
-  scaffoldBackgroundColor: Colors.white,
-  appBarTheme: AppBarTheme(
-    backgroundColor: Colors.blue,
-    foregroundColor: Colors.white,
-    elevation: 0,
-  ),
-  textTheme: TextTheme(
-    bodyLarge: TextStyle(color: Colors.black),
-    bodyMedium: TextStyle(color: Colors.black87),
-  ),
+  primary: Color(0xFF416FDF),
+  onPrimary: Color(0xFFFFFFFF),
+  secondary: Color(0xFF6EAEE7),
+  onSecondary: Color(0xFFFFFFFF),
+  error: Color(0xFFBA1A1A),
+  onError: Color(0xFFFFFFFF),
+  shadow: Color(0xFF000000),
+  outlineVariant: Color(0xFFC2C8BC),
+  surface: Color(0xFFF9FAF3),
+  onSurface: Color(0xFF1A1C18),
 );
-final ThemeData darkTheme = ThemeData(
+
+const darkColorScheme = ColorScheme(
   brightness: Brightness.dark,
-  primarySwatch: Colors.blue,
-  scaffoldBackgroundColor: Colors.black,
-  appBarTheme: AppBarTheme(
-    backgroundColor: Colors.black,
-    foregroundColor: Colors.white,
-    elevation: 0,
-  ),
-  textTheme: TextTheme(
-    bodyLarge: TextStyle(color: Colors.white),
-    bodyMedium: TextStyle(color: Colors.white70),
+  primary: Color(0xFF416FDF),
+  onPrimary: Color(0xFFFFFFFF),
+  secondary: Color(0xFF6EAEE7),
+  onSecondary: Color(0xFFFFFFFF),
+  error: Color(0xFFBA1A1A),
+  onError: Color(0xFFFFFFFF),
+  shadow: Color(0xFF000000),
+  outlineVariant: Color(0xFFC2C8BC),
+  surface: Color(0xFFF9FAF3),
+  onSurface: Color(0xFF1A1C18),
+);
+
+ThemeData lightMode = ThemeData(
+  useMaterial3: true,
+  brightness: Brightness.light,
+  colorScheme: lightColorScheme,
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ButtonStyle(
+      backgroundColor: WidgetStateProperty.all<Color>(
+        lightColorScheme.primary, // Slightly darker shade for the button
+      ),
+      foregroundColor:
+          WidgetStateProperty.all<Color>(Colors.white), // text color
+      elevation: WidgetStateProperty.all<double>(5.0), // shadow
+      padding: WidgetStateProperty.all<EdgeInsets>(
+          const EdgeInsets.symmetric(horizontal: 20, vertical: 18)),
+      shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+        RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(16), // Adjust as needed
+        ),
+      ),
+    ),
   ),
 );
+
+ThemeData darkMode = ThemeData(
+  useMaterial3: true,
+  brightness: Brightness.dark,
+  colorScheme: darkColorScheme,
+);
+
+InputDecoration formDecoration() {
+  return InputDecoration(
+      label: Text("Email"),
+      hintText: "Enter email",
+      hintStyle: TextStyle(color: Colors.black26),
+      border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black12),
+          borderRadius: BorderRadius.circular(10)),
+      enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black12),
+          borderRadius: BorderRadius.circular(10)));
+}
